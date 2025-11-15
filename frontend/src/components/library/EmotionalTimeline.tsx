@@ -3,22 +3,7 @@
 import { motion } from "framer-motion";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { cn } from "@/lib/utils";
-
-interface TimelineEntry {
-  gameId: string;
-  gameName: string;
-  completedAt: string;
-  emotionProfile: {
-    joy?: number;
-    melancholy?: number;
-    tension?: number;
-    wonder?: number;
-    nostalgia?: number;
-    catharsis?: number;
-    comfort?: number;
-    challenge?: number;
-  };
-}
+import type { TimelineEntry } from "@/lib/types";
 
 interface EmotionalTimelineProps {
   timeline: TimelineEntry[];

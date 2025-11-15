@@ -125,3 +125,10 @@ export interface TasteRayGame {
   };
 }
 
+export interface TimelineEntry {
+  gameId: string;
+  gameName: string;
+  completedAt: string;
+  emotionProfile: EmotionProfile;
+}
+

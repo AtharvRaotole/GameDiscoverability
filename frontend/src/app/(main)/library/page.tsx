@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { BookOpen, Play, CheckCircle, Heart, BarChart3 } from "lucide-react";
 import { useEffect } from "react";
+import type { TimelineEntry } from "@/lib/types";
 
 type LibraryStatus = "all" | "playing" | "completed" | "wishlist";
 
@@ -79,7 +80,21 @@ export default function LibraryPage() {
 
   const library = libraryData?.library || [];
   const stats = statsData?.stats || { total: 0, playing: 0, completed: 0, wishlist: 0 };
-  const timeline = timelineData?.timeline || [];
+  const timeline: TimelineEntry[] = (timelineData?.timeline || []).map((entry: any) => ({
+    gameId: entry.gameId,
+    gameName: entry.gameName,
+    completedAt: entry.completedAt,
+    emotionProfile: {
+      joy: entry.emotionProfile?.joy || 0,
+      melancholy: entry.emotionProfile?.melancholy || 0,
+      tension: entry.emotionProfile?.tension || 0,
+      wonder: entry.emotionProfile?.wonder || 0,
+      nostalgia: entry.emotionProfile?.nostalgia || 0,
+      catharsis: entry.emotionProfile?.catharsis || 0,
+      comfort: entry.emotionProfile?.comfort || 0,
+      challenge: entry.emotionProfile?.challenge || 0,
+    },
+  }));
 
   const tabs: Array<{ id: LibraryStatus; label: string; icon: any; count?: number }> = [
     { id: "all", label: "All", icon: BookOpen, count: stats.total },

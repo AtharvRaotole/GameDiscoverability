@@ -232,7 +232,12 @@ export const api = {
   },
 
   getEmotionalTimeline: async (userId: string) => {
-    return fetchApi<{ timeline: unknown[] }>(`/api/library/${userId}/timeline`);
+    return fetchApi<{ timeline: Array<{
+      gameId: string;
+      gameName: string;
+      completedAt: string;
+      emotionProfile: Record<string, number>;
+    }> }>(`/api/library/${userId}/timeline`);
   },
 
   /**
