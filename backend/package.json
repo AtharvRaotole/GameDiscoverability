@@ -31,7 +31,7 @@
     "ai"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@pinecone-database/pinecone": "^3.0.1",
     "@types/cors": "^2.8.17",
