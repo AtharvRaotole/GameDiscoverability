@@ -498,7 +498,29 @@ Get journey details.
 
 Fork a journey with modifications.
 
-For complete API documentation, see [API_DOCUMENTATION.md](./API_DOCUMENTATION.md).
+**Request:**
+```json
+{
+  "userId": "uuid",
+  "modifications": {
+    "title": "My Forked Journey",
+    "description": "A personalized version",
+    "gameIds": ["753640", "480", "304430"]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "journey": {
+    "id": "uuid",
+    "title": "My Forked Journey",
+    "games": [ ... ],
+    "createdBy": "uuid"
+  }
+}
+```
 
 ---
 
@@ -614,9 +636,23 @@ npm run test:coverage    # Coverage report
 - **Railway PostgreSQL**: Alternative option
 - **Self-hosted**: Requires pgvector extension
 
-### Environment Setup
+### Deployment Checklist
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+1. **Backend Environment Variables** (set in Railway):
+   - All variables from [Environment Variables](#-environment-variables) section
+   - Ensure `CORS_ORIGIN` matches your frontend URL
+   - Set `NODE_ENV=production`
+
+2. **Frontend Environment Variables** (set in Vercel):
+   - `NEXT_PUBLIC_API_URL`: Your Railway backend URL
+
+3. **Database Setup**:
+   - Run schema: `psql $DATABASE_URL -f backend/src/config/schema.sql`
+   - Import games: `npm run import-popular-games` (on Railway or locally)
+
+4. **Verify Deployment**:
+   - Check backend health: `https://your-backend.railway.app/health`
+   - Test frontend: `https://your-app.vercel.app`
 
 ---
 
