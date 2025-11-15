@@ -1,0 +1,62 @@
+{
+  "name": "gamesoul-backend",
+  "version": "1.0.0",
+  "description": "GameSoul backend API - Emotion-based game discovery",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "import-games": "tsx scripts/import-games.ts",
+    "import-popular-games": "tsx scripts/import-popular-games.ts",
+    "recalculate-soul-scores": "tsx scripts/recalculate-soul-scores.ts",
+    "seed-journeys": "tsx scripts/seed-journeys.ts",
+    "test-tasteray": "tsx scripts/test-tasteray.ts",
+    "test-tasteray-standalone": "tsx scripts/test-tasteray-standalone.ts",
+    "check-setup": "tsx scripts/check-setup.ts",
+    "setup-supabase": "tsx scripts/setup-supabase.ts",
+    "test-pinecone": "tsx scripts/test-pinecone.ts",
+    "test-openai": "tsx scripts/test-openai.ts",
+    "setup-database": "tsx scripts/setup-database.ts",
+    "verify-database": "tsx scripts/verify-database.ts"
+  },
+  "keywords": [
+    "games",
+    "discovery",
+    "emotion",
+    "ai"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pinecone-database/pinecone": "^3.0.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ioredis": "^5.4.2",
+    "openai": "^4.76.1",
+    "pg": "^8.13.1",
+    "redis": "^4.7.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@sentry/node": "^10.25.0",
+    "@types/jest": "^30.0.0",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
