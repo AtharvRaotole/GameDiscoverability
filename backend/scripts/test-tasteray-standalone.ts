@@ -4,7 +4,10 @@
  * Tests TasteRay API without requiring full environment setup
  */
 
-const TASTERAY_API_KEY = process.env.TASTERAY_API_KEY || "reco_live_afa7466d0b6f7fdf344563fe366add4e879d7921bb2a2f55";
+const TASTERAY_API_KEY = process.env.TASTERAY_API_KEY;
+if (!TASTERAY_API_KEY) {
+  throw new Error("TASTERAY_API_KEY environment variable is required");
+}
 const BASE_URL = "https://api.tasteray.com";
 
 async function makeRequest(endpoint: string, options: { method?: string; body?: string } = {}) {
